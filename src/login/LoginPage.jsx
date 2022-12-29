@@ -167,7 +167,9 @@ class LoginPage extends React.Component {
     const isInstitutionAuthActive = !!secondaryProviders.length && !currentProvider;
     const isSocialAuthActive = !!providers.length && !currentProvider;
     const isEnterpriseLoginDisabled = getConfig().DISABLE_ENTERPRISE_LOGIN;
-
+    console.log("isEnterpriseLoginDisabled :", isEnterpriseLoginDisabled)
+    console.log("isSocialAuthActive :", isSocialAuthActive)
+    console.log("isInstitutionAuthActive :", isInstitutionAuthActive)
     return (
       <>
         {((!isEnterpriseLoginDisabled && isSocialAuthActive) || (isEnterpriseLoginDisabled && isInstitutionAuthActive))
@@ -177,12 +179,12 @@ class LoginPage extends React.Component {
              </div>
            )}
 
-        {(!isEnterpriseLoginDisabled && isSocialAuthActive) && (
+        {/* {(!isEnterpriseLoginDisabled && isSocialAuthActive) && (
           <Hyperlink className="btn btn-link btn-sm text-body p-0 mb-4" destination={this.getEnterPriseLoginURL()}>
             <Icon src={Institution} className="institute-icon" />
             {intl.formatMessage(messages['enterprise.login.btn.text'])}
           </Hyperlink>
-        )}
+        )} */}
 
         {thirdPartyAuthApiStatus === PENDING_STATE ? (
           <Skeleton className="tpa-skeleton mb-3" height={30} count={2} />

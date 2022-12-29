@@ -17,11 +17,12 @@ export async function getThirdPartyAuthContext(urlParams) {
     .catch((e) => {
       throw (e);
     });
+    console.log(data);
   return {
     fieldDescriptions: data.registration_fields || {},
     optionalFields: data.optional_fields || {},
     thirdPartyAuthContext: camelCaseObject(
-      convertKeyNames(data.context_data, { fullname: 'name' }),
+      convertKeyNames(data, { fullname: 'name' }),
     ),
   };
 }
